@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="#0288D1"
+    android:alpha="0.7"
     android:layout_height="match_parent">
 
     <FrameLayout
@@ -13,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_gravity="top"
+            android:layout_gravity="center"
             android:layout_height="wrap_content">
 
             <odoo.controls.BezelImageView
@@ -93,15 +94,5 @@
         </LinearLayout>
 
 
-        <ImageView
-            android:src="@drawable/odoo_small"
-            android:tint="#ffffff"
-            android:layout_marginRight="@dimen/default_16dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="60dp"
-            android:layout_marginTop="@dimen/default_8dp"
-            android:layout_marginLeft="@dimen/default_16dp"
-            android:layout_gravity="bottom|left"
-            android:layout_height="wrap_content" />
     </FrameLayout>
 </LinearLayout>
