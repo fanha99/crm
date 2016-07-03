@@ -63,7 +63,8 @@ public class CallerWindow {
                         | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
                         | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
                 PixelFormat.TRANSLUCENT);
-        params.gravity = Gravity.TOP;
+		// Fanha: not always on top, because some phone
+        // params.gravity = Gravity.TOP;
         return params;
     }
 
@@ -118,10 +119,21 @@ public class CallerWindow {
                     callerView = buildView();
                     bindView(row);
                     WindowManager.LayoutParams params = getWindowParams();
-                    if (!dialed && !inIdleMode() && isLollipop()) {
-                        params.gravity = Gravity.BOTTOM;
-                    }
+					// Fanha: why need to be the bottom?
+                    // if (!dialed && !inIdleMode() && isLollipop()) {
+                       // params.gravity = Gravity.BOTTOM;
+                    // }
                     windowManager.addView(callerView, params);
+					// Fanha: click to dimiss, sometime it is not dimiss while end call
+                    callerView.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            Log.i(TAG, "click");
+                            dismiss();
+                        }
+                    });
                 }
             }, 1000);
         }
