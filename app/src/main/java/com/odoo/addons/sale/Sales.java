@@ -57,6 +57,7 @@ import com.odoo.core.utils.controls.OBottomSheet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class Sales extends BaseFragment implements
         OCursorListAdapter.OnViewBindListener, LoaderManager.LoaderCallbacks<Cursor>,
@@ -113,16 +114,16 @@ public class Sales extends BaseFragment implements
         String format = (db().getUser().getOdooVersion().getVersionNumber() <= 7)
                 ? ODateUtils.DEFAULT_DATE_FORMAT : ODateUtils.DEFAULT_FORMAT;
         String date = ODateUtils.convertToDefault(row.getString("date_order"),
-                format, "MMMM, dd");
+                format, "yyyy/MM/dd");
         OControls.setText(view, R.id.date_order, date);
         OControls.setText(view, R.id.state, row.getString("state_title"));
         if (row.getString("partner_name").equals("false")) {
-            OControls.setGone(view, (R.id.partner_name));
+           OControls.setGone(view, (R.id.partner_name));
         } else {
             OControls.setVisible(view, R.id.partner_name);
             OControls.setText(view, R.id.partner_name, row.getString("partner_name"));
         }
-        OControls.setText(view, R.id.amount_total, row.getString("amount_total"));
+        OControls.setText(view, R.id.amount_total, String.format(Locale.US, "%,.0f", row.getFloat("amount_total")));
         if (row.getString("currency_symbol").equals("false")) {
             OControls.setGone(view, (R.id.currency_symbol));
         } else {

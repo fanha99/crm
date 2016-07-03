@@ -58,6 +58,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import odoo.helper.OArguments;
 import odoo.controls.ExpandableListControl;
@@ -146,9 +147,9 @@ public class SalesDetail extends OdooCompatActivity implements View.OnClickListe
                 mForm.setEditable(false);
             }
             currencySymbol = record.getM2ORecord("currency_id").browse().getString("symbol");
-            untaxedAmt.setText(String.format("%.2f", record.getFloat("amount_untaxed")));
-            taxesAmt.setText(String.format("%.2f", record.getFloat("amount_tax")));
-            total_amt.setText(String.format("%.2f", record.getFloat("amount_total")));
+            untaxedAmt.setText(String.format(Locale.US, "%,.0f", record.getFloat("amount_untaxed")));
+            taxesAmt.setText(String.format(Locale.US, "%,.0f", record.getFloat("amount_tax")));
+            total_amt.setText(String.format(Locale.US, "%,.0f", record.getFloat("amount_total")));
             mForm.initForm(record);
         }
         mSOType = txvType.getText().toString();
@@ -178,8 +179,8 @@ public class SalesDetail extends OdooCompatActivity implements View.OnClickListe
                         ODataRow row = (ODataRow) mAdapter.getItem(position);
                         OControls.setText(mView, R.id.edtName, row.getString("name"));
                         OControls.setText(mView, R.id.edtProductQty, row.getString("product_uom_qty"));
-                        OControls.setText(mView, R.id.edtProductPrice, String.format("%.2f", row.getFloat("price_unit")));
-                        OControls.setText(mView, R.id.edtSubTotal, String.format("%.2f", row.getFloat("price_subtotal")));
+                        OControls.setText(mView, R.id.edtProductPrice, String.format(Locale.US, "%,.0f", row.getFloat("price_unit")));
+                        OControls.setText(mView, R.id.edtSubTotal, String.format(Locale.US, "%,.0f", row.getFloat("price_subtotal")));
                         return mView;
                     }
                 });

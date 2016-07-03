@@ -192,8 +192,9 @@ public class SaleOrder extends OModel {
     public String storePartnerName(OValues values) {
         try {
             if (!values.getString("partner_id").equals("false")) {
-                JSONArray partner_id = new JSONArray(values.getString("partner_id"));
-                return partner_id.getString(1);
+				// Fanha: simplier way to get name
+                int loc = values.getString("partner_id").indexOf(".0,");
+                return values.getString("partner_id").substring(loc + 4, values.getString("partner_id").length() - 1);
             }
         } catch (Exception e) {
             e.printStackTrace();
