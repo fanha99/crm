@@ -197,6 +197,10 @@ public class PhoneStateReceiver extends BroadcastReceiver implements IOnCustomer
                     : row.getInt("opportunity_id");
             extra.putInt("opportunity_id", row_id);
             row.put("caller_contact", callerNumber);
+			// Fanha: make sure it is show up on kitkat
+            Log.i(TAG, "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
+            if (callerWindow == null)
+                callerWindow = new CallerWindow(mContext);
             if(callerWindow!=null) {
                 callerWindow.show(dialed, row);
                 mPref.setBoolean(KEY_ACTIVITY_STARTED, false);
