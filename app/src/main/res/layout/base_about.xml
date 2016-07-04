@@ -15,7 +15,7 @@
         android:paddingTop="@dimen/statusBarHeight"
         android:paddingRight="@dimen/default_8dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
-        app:theme="@style/ToolBarTheme" />
+        android:theme="@style/ToolBarTheme" />
 
     <ScrollView
         android:layout_width="match_parent"
