@@ -118,7 +118,7 @@ public class Sales extends BaseFragment implements
         OControls.setText(view, R.id.date_order, date);
         OControls.setText(view, R.id.state, row.getString("state_title"));
         if (row.getString("partner_name").equals("false")) {
-           OControls.setGone(view, (R.id.partner_name));
+            OControls.setGone(view, (R.id.partner_name));
         } else {
             OControls.setVisible(view, R.id.partner_name);
             OControls.setText(view, R.id.partner_name, row.getString("partner_name"));
