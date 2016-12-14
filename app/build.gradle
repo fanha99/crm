@@ -6,13 +6,21 @@ android {
     defaultConfig {
         manifestPlaceholders = [applicationName: "QQBee"]
         applicationId "com.odoo.crm"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 24
         versionCode 7
-        versionName "1.1.0alpha"
+        versionName "1.1.0 QQBee"
         multiDexEnabled true
     }
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
     buildTypes {
+        debug {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
         release {
             minifyEnabled true
             shrinkResources true
