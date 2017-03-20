@@ -58,7 +58,8 @@ public class SaleOrderSyncService extends OSyncService implements ISyncFinishLis
             }
             if (!firstSync)
                 adapter.onSyncFinish(this);
-            domain.add("user_id", "=", user.getUserId());
+            // Fanha: remove this because we need more sale order to show
+            // domain.add("user_id", "=", user.getUser_id());
             adapter.setDomain(domain).syncDataLimit(50);
         }
         if (adapter.getModel().getModelName().equals("account.payment.term")) {

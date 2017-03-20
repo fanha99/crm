@@ -23,7 +23,6 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.odoo.base.addons.res.ResPartner;
-import com.odoo.core.rpc.helper.ODomain;
 import com.odoo.core.service.OSyncAdapter;
 import com.odoo.core.service.OSyncService;
 import com.odoo.core.support.OUser;
@@ -38,14 +37,6 @@ public class CustomerSyncService extends OSyncService {
 
     @Override
     public void performDataSync(OSyncAdapter adapter, Bundle extras, OUser user) {
-        if (adapter.getModel().getModelName().equals("res.partner")) {
-            ODomain domain = new ODomain();
-            domain.add("|");
-            domain.add("|");
-            domain.add("opportunity_ids.user_id", "=", user.getUserId());
-            domain.add("sale_order_ids.user_id", "=", user.getUserId());
-            domain.add("id", "in", adapter.getModel().getServerIds());
-            adapter.setDomain(domain);
-        }
+        adapter.syncDataLimit(80);
     }
 }
