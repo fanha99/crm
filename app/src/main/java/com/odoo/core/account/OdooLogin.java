@@ -95,12 +95,8 @@ public class OdooLogin extends AppCompatActivity implements View.OnClickListener
         edtSelfHosted = (EditText) findViewById(R.id.edtSelfHostedURL);
         edtUsername = (EditText) findViewById(R.id.edtUserName);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
-
-        if (BuildConfig.DEBUG) {
-            edtSelfHosted.setText("http://192.168.199.101:8069");
-            edtUsername.setText("admin");
-            edtPassword.setText("admin");
-        }
+		
+        toggleSelfHostedURL();
     }
 
     private void startOdooActivity() {
@@ -144,7 +140,9 @@ public class OdooLogin extends AppCompatActivity implements View.OnClickListener
             findViewById(R.id.layoutSelfHosted).setVisibility(View.VISIBLE);
             edtSelfHosted.setOnFocusChangeListener(this);
             edtSelfHosted.requestFocus();
-            txvAddSelfHosted.setText(R.string.label_login_with_odoo);
+            findViewById(R.id.forgot_password).setVisibility(View.GONE);
+            findViewById(R.id.create_account).setVisibility(View.GONE);
+            txvAddSelfHosted.setVisibility(View.GONE);
         } else {
             findViewById(R.id.layoutBorderDB).setVisibility(View.GONE);
             findViewById(R.id.layoutDatabase).setVisibility(View.GONE);

@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="#0288D1"
+    android:background="@android:color/transparent"
     android:layout_height="match_parent">
 
     <FrameLayout
+        android:alpha="0.7"
+        android:background="#0288D1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -13,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_gravity="top"
+            android:layout_gravity="center"
             android:layout_height="wrap_content">
 
             <odoo.controls.BezelImageView
@@ -40,7 +42,7 @@
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="#ffffff"
                         android:fontFamily="@string/font_normal"
-                        android:singleLine="true"
+                        android:maxLines="1"
                         android:ellipsize="end"
                         android:layout_marginRight="5dp"
                         android:layout_width="wrap_content"
@@ -52,7 +54,7 @@
                         android:textColor="#ebebeb"
                         android:textStyle="italic"
                         android:fontFamily="@string/font_condensed"
-                        android:singleLine="true"
+                        android:maxLines="1"
                         android:ellipsize="end"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -75,7 +77,7 @@
                     android:textColor="#bbffffff"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@string/font_normal"
-                    android:singleLine="true"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -84,7 +86,7 @@
                     android:textAppearance="?android:textAppearanceLarge"
                     android:textColor="#ffffff"
                     android:fontFamily="@string/font_normal"
-                    android:singleLine="true"
+                    android:maxLines="1"
                     android:ellipsize="end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -93,15 +95,5 @@
         </LinearLayout>
 
 
-        <ImageView
-            android:src="@drawable/odoo_small"
-            android:tint="#ffffff"
-            android:layout_marginRight="@dimen/default_16dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="60dp"
-            android:layout_marginTop="@dimen/default_8dp"
-            android:layout_marginLeft="@dimen/default_16dp"
-            android:layout_gravity="bottom|left"
-            android:layout_height="wrap_content" />
     </FrameLayout>
 </LinearLayout>
