@@ -139,12 +139,13 @@ public class PhoneStateReceiver extends BroadcastReceiver implements IOnCustomer
         mPref.setBoolean(KEY_OFFHOOK, false);
         if (data != null && !mPref.getBoolean("notified", false)) {
             mPref.setBoolean("notified", true);
-            int notification_id = 55568;
+            int notification_id = Integer.parseInt(callerNumber);
             ONotificationBuilder builder = new ONotificationBuilder(mContext, notification_id);
             data.putInt("notification_id", notification_id);
             builder.setTitle(_s(R.string.label_missed_call_from_customer));
             builder.setIcon(R.drawable.ic_action_user);
-            builder.setText(data.getString("name"));
+            builder.setText(data.getString("name") + " " + callerNumber);
+            builder.setBigText(data.getString("name") + " " + callerNumber);
             ONotificationBuilder.NotificationAction callBack =
                     new ONotificationBuilder.NotificationAction(R.drawable.ic_action_phone,
                             "Call back", REQUEST_CALL_BACK,
@@ -197,6 +198,10 @@ public class PhoneStateReceiver extends BroadcastReceiver implements IOnCustomer
                     : row.getInt("opportunity_id");
             extra.putInt("opportunity_id", row_id);
             row.put("caller_contact", callerNumber);
+			// Fanha: make sure it is show up on kitkat
+            Log.i(TAG, "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
+            if (callerWindow == null)
+                callerWindow = new CallerWindow(mContext);
             if(callerWindow!=null) {
                 callerWindow.show(dialed, row);
                 mPref.setBoolean(KEY_ACTIVITY_STARTED, false);
